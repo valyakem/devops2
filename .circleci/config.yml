@@ -30,8 +30,8 @@ jobs:
                 sudo apt-get install flake8
                 flake8 --exclude=env* --statistics
                 pip install -U pytest
-                # pytest -q test_calculator.py
-                pytest –-junitxml=test-results/junit.xml
+                pytest -q test_calculator.py
+                #pytest --junitxml=test-results/junit.xml
       
       - store_test_results:
           path: test-results
