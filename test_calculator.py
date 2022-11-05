@@ -1,10 +1,4 @@
 
-
-"""
-Unit tes for the calculator library
-"""
-
-
 import calculator
 
 
