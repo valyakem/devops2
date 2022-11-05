@@ -10,7 +10,7 @@ jobs:
 
     steps:
       #1 Obtain the repo from Github
-      - checkout:
+      - checkout
 
       #2 Create a virtual environment and install dependencies
       - run:
