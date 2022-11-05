@@ -19,17 +19,18 @@ jobs:
                 python3 -m venv env
                 source env/bin/activate
                 pip3 install -r requirements.txt
+                pip install -U pytest
 
       #3 Run coding convention software plus tester .
       - run: 
           name: run tests
           command: |
+                source env/bin/activate
                 sudo apt-get update
                 sudo apt-get install flake8
                 flake8 --exclude=env* --statistics
                 pip install -U pytest
                 pytest -q test_calculator.py
-                # pytest –-junitxml=test-results/junit.xml
       
       - store_test_results:
           path: test-results
