@@ -27,7 +27,6 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install flake8
                 flake8 --exclude=env* --statistics
-                # pytest -v --cov=calculator
                 pytest –-junitxml=test-results/junit.xml
       
       - store_test_results:
