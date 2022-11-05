@@ -25,9 +25,11 @@ jobs:
       - run: 
           name: run tests
           command: |
+                source env/bin/activate
                 sudo apt-get update
                 sudo apt-get install flake8
                 flake8 --exclude=env* --statistics
+                pip install -U pytest
                 pytest -q test_calculator.py
       
       - store_test_results:
