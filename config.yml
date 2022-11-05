@@ -1,0 +1,37 @@
+#python CircleCI 2.0 configuration file
+Version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+
+    working_directory: .
+
+    steps:
+      #1 Obtain the repo from Github
+      - checkout:
+
+      #2 Create a virtual environment and install dependencies
+      - run:
+          name: install dependencies
+          command: |
+                python3 -m venv env
+                . env/bin/activate
+                pip install -r requirements.txt
+
+      #3 Run coding convention software plus tester .
+      - run: 
+          name: run tests
+          command: |
+                . env/bin/activate
+                flake8 --exclude=env* --statistics
+                # pytest -v --cov=calculator
+                pytest --junitxml=test-results/junits.xml
+      
+      - store_test_results:
+          path: test-results
+      
+      - store_artifacts:
+          path: test-results
+
